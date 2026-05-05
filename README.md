@@ -34,6 +34,20 @@ Common variables:
 - `VITE_API_BASE_URL`: backend API base URL (if not set, app uses fallback/mock behavior where implemented)
 - `VITE_THAI_OIL_API_URL`: optional override for live Thai fuel price source
 - `VITE_OPEN_METEO_API_URL`: optional override for live weather source
+- `VITE_SUPABASE_URL`: optional Supabase project URL (used by Product Database service)
+- `VITE_SUPABASE_PUBLISHABLE_KEY`: optional Supabase publishable key (preferred)
+- `VITE_SUPABASE_ANON_KEY`: optional legacy anon key
+- `VITE_SUPABASE_PRODUCTS_TABLE`: optional table name (default `products`)
+
+### Product Catalog Data Source Priority
+
+The Product Database module uses an adapter layer so UI code does not depend on a single backend:
+
+1. Supabase REST (`VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY`)
+2. Generic API (`VITE_API_BASE_URL`)
+3. Local fallback mock data
+
+This keeps migration to a self-hosted PostgreSQL backend straightforward: keep the same product DTO and swap adapter implementation.
 
 ## Run Development Server
 

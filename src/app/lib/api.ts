@@ -32,5 +32,18 @@ export async function apiRequest<T>(path: string, options: ApiOptions = {}): Pro
     throw new Error(`API ${method} ${endpoint} failed: ${response.status} ${response.statusText} ${text}`);
   }
 
-  return (await response.json()) as T;
+  if (response.status === 204) {
+    return undefined as T;
+  }
+
+  const raw = await response.text().catch(() => '');
+  if (!raw.trim()) {
+    return undefined as T;
+  }
+
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    throw new Error(`API ${method} ${endpoint} returned non-JSON response`);
+  }
 }

@@ -1,5 +1,5 @@
-/** Reference date for demo — align with app "today" */
-export const APP_TODAY = new Date('2026-05-05');
+export const APP_TODAY = new Date();
+APP_TODAY.setHours(0, 0, 0, 0);
 
 export function calculateRemainingDays(expiryDate: string, today: Date = APP_TODAY): number {
   const expiry = new Date(expiryDate);

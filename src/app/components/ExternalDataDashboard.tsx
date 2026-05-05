@@ -9,6 +9,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { APP_TODAY } from '../lib/calculations';
 import { fuelPriceHistory, holidaysTh, weatherForecast7 } from '../lib/mockData';
 import { loadFuelPriceHistory, loadHolidays, loadWeatherForecast } from '../lib/dataEndpoints';
 import { useApiData } from '../lib/useApiData';
@@ -22,10 +23,12 @@ export function ExternalDataDashboard() {
   const { data: weatherData } = useApiData(loadWeatherForecast, weatherForecast7);
   const currentWeather = weatherData[0];
 
-  const upcoming = holidaysData.filter((h) => new Date(h.date) >= new Date('2026-05-05')).slice(0, 4);
-  const fuelMin = Math.min(...fuelPriceData.map((d) => d.price));
-  const fuelMax = Math.max(...fuelPriceData.map((d) => d.price));
-  const fuelCurrent = fuelPriceData[fuelPriceData.length - 1].price;
+  const upcoming = holidaysData.filter((h) => new Date(h.date) >= APP_TODAY).slice(0, 4);
+  const fuelPrices = fuelPriceData.map((d) => d.price);
+  const hasFuelData = fuelPrices.length > 0;
+  const fuelMin = hasFuelData ? Math.min(...fuelPrices) : 0;
+  const fuelMax = hasFuelData ? Math.max(...fuelPrices) : 0;
+  const fuelCurrent = hasFuelData ? fuelPrices[fuelPrices.length - 1] : 0;
 
   return (
     <div className="space-y-6">
@@ -88,8 +91,12 @@ export function ExternalDataDashboard() {
             <Fuel className="h-4 w-4 text-rose-500" />
             Fuel Price
           </div>
-          <p className="mt-2 text-3xl font-bold text-slate-900">฿{fuelCurrent.toFixed(2)}/L</p>
-          <p className="text-sm text-slate-600">Range 30d: ฿{fuelMin.toFixed(2)}–{fuelMax.toFixed(2)}</p>
+          <p className="mt-2 text-3xl font-bold text-slate-900">
+            {hasFuelData ? `฿${fuelCurrent.toFixed(2)}/L` : 'N/A'}
+          </p>
+          <p className="text-sm text-slate-600">
+            {hasFuelData ? `Range 30d: ฿${fuelMin.toFixed(2)}–฿${fuelMax.toFixed(2)}` : 'No fuel data available'}
+          </p>
         </Card>
         <Card>
           <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
@@ -162,7 +169,9 @@ export function ExternalDataDashboard() {
               </ResponsiveContainer>
             </div>
             <p className="mt-2 text-xs text-slate-600">
-              Current ฿{fuelCurrent.toFixed(2)} · Min ฿{fuelMin.toFixed(2)} · Max ฿{fuelMax.toFixed(2)}
+              {hasFuelData
+                ? `Current ฿${fuelCurrent.toFixed(2)} · Min ฿${fuelMin.toFixed(2)} · Max ฿${fuelMax.toFixed(2)}`
+                : 'Fuel trend data unavailable'}
             </p>
           </Card>
         </div>

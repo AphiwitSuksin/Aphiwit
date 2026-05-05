@@ -43,7 +43,7 @@ export function MapAnalytics() {
         dist: haversineKm(selected.lat, selected.lng, b.lat, b.lng),
         sales: b.monthlySalesThb,
       })),
-    [selected.lat, selected.lng],
+    [branchData, selected.lat, selected.lng],
   );
 
   return (

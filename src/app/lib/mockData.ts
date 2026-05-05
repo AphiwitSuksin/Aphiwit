@@ -114,9 +114,22 @@ export const branches: Branch[] = [
 
 export type ProductRow = {
   code: string;
-  type: 'Raw Material' | 'Finished Product';
+  type:
+    | 'Raw Material'
+    | 'Finished Product'
+    | 'Product'
+    | 'วัตถุดิบ'
+    | 'วัตถุดิบสิ้นเปลือง'
+    | 'อุปกรณ์'
+    | 'เครื่องใช้'
+    | 'อื่นๆ';
   supplier: string;
   name: string;
+  detail?: string;
+  measureKind?: 'ปริมาตร' | 'น้ำหนัก';
+  measureValue?: number;
+  unit?: string;
+  currency?: 'THB' | 'USD' | 'EUR' | 'JPY' | 'CNY' | 'OTHER';
   shelfLifeMonths: number;
   priceThb: number;
   priceUsd: number;

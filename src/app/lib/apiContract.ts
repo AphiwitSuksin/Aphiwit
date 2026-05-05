@@ -130,9 +130,32 @@ const methodRecommendationSchema = z.object({
 
 const productSchema = z.object({
   code: z.string(),
-  type: z.union([z.literal('Raw Material'), z.literal('Finished Product')]),
+  type: z.union([
+    z.literal('Raw Material'),
+    z.literal('Finished Product'),
+    z.literal('Product'),
+    z.literal('วัตถุดิบ'),
+    z.literal('วัตถุดิบสิ้นเปลือง'),
+    z.literal('อุปกรณ์'),
+    z.literal('เครื่องใช้'),
+    z.literal('อื่นๆ'),
+  ]),
   supplier: z.string(),
   name: z.string(),
+  detail: z.string().optional(),
+  measureKind: z.union([z.literal('ปริมาตร'), z.literal('น้ำหนัก')]).optional(),
+  measureValue: z.number().optional(),
+  unit: z.string().optional(),
+  currency: z
+    .union([
+      z.literal('THB'),
+      z.literal('USD'),
+      z.literal('EUR'),
+      z.literal('JPY'),
+      z.literal('CNY'),
+      z.literal('OTHER'),
+    ])
+    .optional(),
   shelfLifeMonths: z.number(),
   priceThb: z.number(),
   priceUsd: z.number(),
