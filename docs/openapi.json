@@ -1,0 +1,398 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Supply Chain Planning API",
+    "version": "1.0.0",
+    "description": "Auto-generated from src/app/lib/apiContract.ts"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com",
+      "description": "Replace with VITE_API_BASE_URL"
+    }
+  ],
+  "paths": {
+    "/branches": {
+      "get": {
+        "summary": "GET /branches",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Branch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/imports/logs": {
+      "get": {
+        "summary": "GET /imports/logs",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImportLogRow"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/integrations/branches": {
+      "get": {
+        "summary": "GET /integrations/branches",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiBranchIntegration"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/kpis": {
+      "get": {
+        "summary": "GET /dashboard/kpis",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardKpis"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/branch-performance": {
+      "get": {
+        "summary": "GET /dashboard/branch-performance",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardBranchPerformance"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/inventory-alerts": {
+      "get": {
+        "summary": "GET /dashboard/inventory-alerts",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InventoryAlert"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/po-recommendations": {
+      "get": {
+        "summary": "GET /dashboard/po-recommendations",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoRecommendation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/external-factors": {
+      "get": {
+        "summary": "GET /dashboard/external-factors",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalFactor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard/recent-activity": {
+      "get": {
+        "summary": "GET /dashboard/recent-activity",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecentActivity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/fuel-prices": {
+      "get": {
+        "summary": "GET /external/fuel-prices",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuelPricePoint"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/holidays": {
+      "get": {
+        "summary": "GET /external/holidays",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Holiday"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/weather-forecast": {
+      "get": {
+        "summary": "GET /external/weather-forecast",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecastPoint"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analytics/delay-summary": {
+      "get": {
+        "summary": "GET /analytics/delay-summary",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DelaySummary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analytics/delay-rows": {
+      "get": {
+        "summary": "GET /analytics/delay-rows",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DelayRow"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecast/series/30": {
+      "get": {
+        "summary": "GET /forecast/series/30",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForecastPoint"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/forecast/method-recommendations": {
+      "get": {
+        "summary": "GET /forecast/method-recommendations",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MethodRecommendation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "summary": "GET /products",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bom": {
+      "get": {
+        "summary": "GET /bom",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BomRow"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/purchase-orders": {
+      "get": {
+        "summary": "GET /purchase-orders",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PurchaseOrder"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/goods-receipts": {
+      "get": {
+        "summary": "GET /goods-receipts",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsReceipt"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inventory": {
+      "get": {
+        "summary": "GET /inventory",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InventoryRow"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Branch": {},
+      "ImportLogRow": {},
+      "ApiBranchIntegration": {},
+      "DashboardKpis": {},
+      "DashboardBranchPerformance": {},
+      "InventoryAlert": {},
+      "PoRecommendation": {},
+      "ExternalFactor": {},
+      "RecentActivity": {},
+      "FuelPricePoint": {},
+      "Holiday": {},
+      "WeatherForecastPoint": {},
+      "DelaySummary": {},
+      "DelayRow": {},
+      "ForecastPoint": {},
+      "MethodRecommendation": {},
+      "Product": {},
+      "BomRow": {},
+      "PurchaseOrder": {},
+      "GoodsReceipt": {},
+      "InventoryRow": {}
+    }
+  }
+}
